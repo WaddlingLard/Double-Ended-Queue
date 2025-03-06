@@ -6,511 +6,542 @@
 #include "deq.h"
 
 // When an item is added to the head once you should be able to get it returned
-bool testHeadPut1Get1() {
+bool testHeadPut1Get1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
+  char *hello = "hello";
 
   deq_head_put(q, hello);
   Data returned = deq_head_get(q);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
   return strcmp(hello, (char *)returned);
 }
 
 // When an item is added to the tail once you should be able to get it returned
-bool testTailPut1Get1() {
+bool testTailPut1Get1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
+  char *hello = "hello";
 
   deq_tail_put(q, hello);
   Data returned = deq_tail_get(q);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
   return strcmp(hello, (char *)returned);
 }
 
 // When an item is added to the head twice you should be able to get the last one put on returned
-bool testHeadPut2Get1() {
+bool testHeadPut2Get1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  
+  char *hello = "hello";
+  char *friend = "friend";
+
   deq_head_put(q, hello);
   deq_head_put(q, friend);
   Data returned = deq_head_get(q);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
   return strcmp(friend, (char *)returned);
 }
 
 // When an item is added to the tail twice you should be able to get the last one put on returned
-bool testTailPut2Get1() {
+bool testTailPut2Get1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  
+  char *hello = "hello";
+  char *friend = "friend";
+
   deq_tail_put(q, hello);
   deq_tail_put(q, friend);
   Data returned = deq_tail_get(q);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
   return strcmp(friend, (char *)returned);
 }
 
 // When an item is added to the head twice you should be able to get the first one when you get the tail
-bool testHeadPut2TailGet1() {
+bool testHeadPut2TailGet1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  
+  char *hello = "hello";
+  char *friend = "friend";
+
   deq_head_put(q, hello);
   deq_head_put(q, friend);
   Data returned = deq_tail_get(q);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
   return strcmp(hello, (char *)returned);
 }
 
 // When an item is added to the tail twice you should be able to get the first one when you get the head
-bool testTailPut2HeadGet1() {
+bool testTailPut2HeadGet1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  
+  char *hello = "hello";
+  char *friend = "friend";
+
   deq_tail_put(q, hello);
   deq_tail_put(q, friend);
   Data returned = deq_head_get(q);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
   return strcmp(hello, (char *)returned);
 }
 
 // When an item is added to the head thrice you should be able to get the last one put on returned
-bool testHeadPut3Get1() {
+bool testHeadPut3Get1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  char * smile = ":)";
+  char *hello = "hello";
+  char *friend = "friend";
+  char *smile = ":)";
 
   deq_head_put(q, hello);
   deq_head_put(q, friend);
   deq_head_put(q, smile);
   Data returned = deq_head_get(q);
-  deq_del(q,0);
+  deq_del(q, 0);
 
-  // Should be returning 0 
+  // Should be returning 0
   return strcmp(smile, (char *)returned);
 }
 
 // When an item is added to the tail thrice you should be able to get the last one put on returned
-bool testTailPut3Get1() {
+bool testTailPut3Get1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  char * smile = ":)";
+  char *hello = "hello";
+  char *friend = "friend";
+  char *smile = ":)";
 
   deq_tail_put(q, hello);
   deq_tail_put(q, friend);
   deq_tail_put(q, smile);
   Data returned = deq_tail_get(q);
-  deq_del(q,0);
+  deq_del(q, 0);
 
-  // Should be returning 0 
+  // Should be returning 0
   return strcmp(smile, (char *)returned);
 }
 
 // When an item is added to the head twice you should be able to get both elements in a stack order
-bool testHeadPut2Get2() {
+bool testHeadPut2Get2()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  
+  char *hello = "hello";
+  char *friend = "friend";
+
   deq_head_put(q, hello);
   deq_head_put(q, friend);
   Data returned1 = deq_head_get(q);
   Data returned2 = deq_head_get(q);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(friend, (char *)returned1) || strcmp(hello, (char *) returned2);
+  return strcmp(friend, (char *)returned1) || strcmp(hello, (char *)returned2);
 }
 
 // When an item is added to the tail twice you should be able to get both elements in a stack order
-bool testTailPut2Get2() {
-  
+bool testTailPut2Get2()
+{
+
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  
+  char *hello = "hello";
+  char *friend = "friend";
+
   deq_tail_put(q, hello);
   deq_tail_put(q, friend);
   Data returned1 = deq_tail_get(q);
   Data returned2 = deq_tail_get(q);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(friend, (char *)returned1) || strcmp(hello, (char *) returned2);
+  return strcmp(friend, (char *)returned1) || strcmp(hello, (char *)returned2);
 }
 
 // Calling ith with 0 as the index should return the element at the head
-bool testHeadPut1ith0() {
+bool testHeadPut1ith0()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
+  char *hello = "hello";
 
   deq_head_put(q, hello);
   Data returned = deq_head_ith(q, 0);
-  deq_del(q,0);
+  deq_del(q, 0);
 
-  // Should be returning 0 
+  // Should be returning 0
   return strcmp(hello, (char *)returned);
 }
 
 // Calling ith with 0 as the index should return the element at the tail
-bool testTailPut1ith0() {
+bool testTailPut1ith0()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
+  char *hello = "hello";
 
   deq_tail_put(q, hello);
   Data returned = deq_tail_ith(q, 0);
-  deq_del(q,0);
+  deq_del(q, 0);
 
-  // Should be returning 0 
+  // Should be returning 0
   return strcmp(hello, (char *)returned);
 }
 
 // Calling ith with 1 as the index should return the element after head
-bool testHeadPut2ith1() {
+bool testHeadPut2ith1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
+  char *hello = "hello";
+  char *friend = "friend";
 
   deq_head_put(q, hello);
   deq_head_put(q, friend);
   Data returned = deq_head_ith(q, 1);
-  deq_del(q,0);
+  deq_del(q, 0);
 
-  // Should be returning 0 
+  // Should be returning 0
   return strcmp(hello, (char *)returned);
 }
 
 // Calling ith with 1 as the index should return the element before tail
-bool testTailPut2ith1() {
+bool testTailPut2ith1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
+  char *hello = "hello";
+  char *friend = "friend";
 
   deq_tail_put(q, hello);
   deq_tail_put(q, friend);
   Data returned = deq_tail_ith(q, 1);
-  deq_del(q,0);
+  deq_del(q, 0);
 
-  // Should be returning 0 
+  // Should be returning 0
   return strcmp(hello, (char *)returned);
 }
 
 // Calling ith with 0 as the index should return the element at the head
-bool testHeadPut2ith0() {
+bool testHeadPut2ith0()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
+  char *hello = "hello";
+  char *friend = "friend";
 
   deq_head_put(q, hello);
   deq_head_put(q, friend);
   Data returned = deq_head_ith(q, 0);
-  deq_del(q,0);
+  deq_del(q, 0);
 
-  // Should be returning 0 
+  // Should be returning 0
   return strcmp(friend, (char *)returned);
 }
 
 // Calling ith with 0 as the index should return the element at the tail
-bool testTailPut2ith0() {
+bool testTailPut2ith0()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
+  char *hello = "hello";
+  char *friend = "friend";
 
   deq_tail_put(q, hello);
   deq_tail_put(q, friend);
   Data returned = deq_tail_ith(q, 0);
-  deq_del(q,0);
+  deq_del(q, 0);
 
-  // Should be returning 0 
+  // Should be returning 0
   return strcmp(friend, (char *)returned);
 }
 
 // Calling ith with 1 as the index should return the middle element
-bool testHeadPut3ith1() {
+bool testHeadPut3ith1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  char * smile = ":)";
+  char *hello = "hello";
+  char *friend = "friend";
+  char *smile = ":)";
 
   deq_head_put(q, hello);
   deq_head_put(q, friend);
   deq_head_put(q, smile);
   Data returned = deq_head_ith(q, 1);
-  deq_del(q,0);
+  deq_del(q, 0);
 
-  // Should be returning 0 
+  // Should be returning 0
   return strcmp(friend, (char *)returned);
 }
 
 // Calling ith with 1 as the index should return the middle element
-bool testTailPut3ith1() {
+bool testTailPut3ith1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  char * smile = ":)";
+  char *hello = "hello";
+  char *friend = "friend";
+  char *smile = ":)";
 
   deq_tail_put(q, hello);
   deq_tail_put(q, friend);
   deq_tail_put(q, smile);
   Data returned = deq_tail_ith(q, 1);
-  deq_del(q,0);
+  deq_del(q, 0);
 
-  // Should be returning 0 
+  // Should be returning 0
   return strcmp(friend, (char *)returned);
 }
 
 // Calling rem after a put should return the same data inserted at the head
-bool testHeadPut1Rem1stElement() {
+bool testHeadPut1Rem1stElement()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
+  char *hello = "hello";
 
   deq_head_put(q, hello);
   Data returned = deq_head_rem(q, hello);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(hello, (char *) returned);
+  return strcmp(hello, (char *)returned);
 }
 
 // Calling rem after a put should return the same data inserted at the tail
-bool testTailPut1Rem1stElement() {
+bool testTailPut1Rem1stElement()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
+  char *hello = "hello";
 
   deq_tail_put(q, hello);
   Data returned = deq_tail_rem(q, hello);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(hello, (char *) returned);
+  return strcmp(hello, (char *)returned);
 }
 
 // Calling rem on the 2nd element added should have it returned
-bool testHeadPut2Rem2ndElement() {
+bool testHeadPut2Rem2ndElement()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
+  char *hello = "hello";
+  char *friend = "friend";
 
   deq_head_put(q, hello);
   deq_head_put(q, friend);
   Data returned = deq_head_rem(q, friend);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(friend, (char *) returned);
+  return strcmp(friend, (char *)returned);
 }
 
 // Calling rem on the 2nd element added should have it returned
-bool testTailPut2Rem2ndElement() {
+bool testTailPut2Rem2ndElement()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
+  char *hello = "hello";
+  char *friend = "friend";
 
   deq_tail_put(q, hello);
   deq_tail_put(q, friend);
   Data returned = deq_tail_rem(q, friend);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(friend, (char *) returned);
+  return strcmp(friend, (char *)returned);
 }
 
-
 // Calling rem on the 1st element added should have it returned
-bool testHeadPut2Rem1stElement() {
+bool testHeadPut2Rem1stElement()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
+  char *hello = "hello";
+  char *friend = "friend";
 
   deq_head_put(q, hello);
   deq_head_put(q, friend);
   Data returned = deq_head_rem(q, hello);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(hello, (char *) returned);
+  return strcmp(hello, (char *)returned);
 }
 
 // Calling rem on the 1st element added should have it returned
-bool testTailPut2Rem1stElement() {
+bool testTailPut2Rem1stElement()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
+  char *hello = "hello";
+  char *friend = "friend";
 
   deq_tail_put(q, hello);
   deq_tail_put(q, friend);
   Data returned = deq_head_rem(q, hello);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(hello, (char *) returned);
+  return strcmp(hello, (char *)returned);
 }
 
 // Calling rem on the 2nd element added should have it returned
-bool testHeadPut3Rem2ndElement() {
+bool testHeadPut3Rem2ndElement()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  char * smile = ":)";
+  char *hello = "hello";
+  char *friend = "friend";
+  char *smile = ":)";
 
   deq_head_put(q, hello);
   deq_head_put(q, friend);
   deq_head_put(q, smile);
   Data returned = deq_head_rem(q, friend);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(friend, (char *) returned);
+  return strcmp(friend, (char *)returned);
 }
 
 // Calling rem on the 2nd element added should have it returned
-bool testTailPut3Rem2ndElement() {
+bool testTailPut3Rem2ndElement()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  char * smile = ":)";
+  char *hello = "hello";
+  char *friend = "friend";
+  char *smile = ":)";
 
   deq_tail_put(q, hello);
   deq_tail_put(q, friend);
   deq_tail_put(q, smile);
   Data returned = deq_head_rem(q, friend);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(friend, (char *) returned);
+  return strcmp(friend, (char *)returned);
 }
 
 // Calling rem on the 2nd element and then ith should be able to retrieve the 3rd element (effectively) from the start
-bool testHeadPut3Rem2ndElementith1() {
+bool testHeadPut3Rem2ndElementith1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  char * smile = ":)";
+  char *hello = "hello";
+  char *friend = "friend";
+  char *smile = ":)";
 
   deq_head_put(q, hello);
   deq_head_put(q, friend);
   deq_head_put(q, smile);
   deq_tail_rem(q, friend);
   Data returned = deq_head_ith(q, 1);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(hello, (char *) returned);
+  return strcmp(hello, (char *)returned);
 }
 
-
 // Calling rem on the 2nd element and then ith should be able to retrieve the 3rd element (effectively) from the start
-bool testTailPut3Rem2ndElementith1() {
+bool testTailPut3Rem2ndElementith1()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * friend = "friend";
-  char * smile = ":)";
+  char *hello = "hello";
+  char *friend = "friend";
+  char *smile = ":)";
 
   deq_tail_put(q, hello);
   deq_tail_put(q, friend);
   deq_tail_put(q, smile);
   deq_head_rem(q, friend);
   Data returned = deq_tail_ith(q, 1);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   // Should be returning 0
-  return strcmp(hello, (char *) returned);
+  return strcmp(hello, (char *)returned);
 }
 
 // Fail Methods
 
 // Should fail as the deq is empty
-bool testGet1() {
-  
+bool testGet1()
+{
+
   Deq q = deq_new();
   deq_head_get(q);
 
-  deq_del(q,0);
+  deq_del(q, 0);
   return -1;
 }
 
 // Should fail as the deq is empty
-bool testith0() {
+bool testith0()
+{
 
   Deq q = deq_new();
   deq_head_ith(q, 0);
 
-  deq_del(q,0);
+  deq_del(q, 0);
   return -1;
 }
 
 // Should fail as the deq is empty
-bool testRemUnknown() {
+bool testRemUnknown()
+{
 
   Deq q = deq_new();
-  char * random = "feipfaj";
+  char *random = "feipfaj";
 
   deq_head_rem(q, random);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   return -1;
 }
 
 // Should fail as there is no element matching the thing being searched
-bool testRemNotInDeq() {
+bool testRemNotInDeq()
+{
 
   Deq q = deq_new();
-  char * hello = "hello";
-  char * random = "pbeoaij";
-  
+  char *hello = "hello";
+  char *random = "pbeoaij";
+
   deq_head_rem(q, random);
-  deq_del(q,0);
+  deq_del(q, 0);
 
   return -1;
 }
 
-int main() {
+int main()
+{
 
   // Running tests for put and get
   bool result1 = testHeadPut1Get1();
@@ -524,11 +555,25 @@ int main() {
   bool result9 = testHeadPut2Get2();
   bool result10 = testTailPut2Get2();
 
+  // Deq q = deq_new();
+
+  // char *a = strdup("AAA");
+  // char *b = strdup("BBB");
+  // char *c = strdup("CCC");
+
+  // deq_head_put(q, a);
+  // deq_head_put(q, b);
+  // deq_head_put(q, b);
+  // deq_tail_put(q, c);
+  // deq_head_rem(q, "AAA");
+  // printf("%s\n", deq_str(q, 0));
+  // deq_del(q, 0);
+
   // Error tests for put and get (Expected Behavior)
   // There is not any error handling, so it will just crash it you just run it
   // bool fail1 = testGet1();
 
-  // Should all be 0 (strcmp returns 0 on equal strings)
+  // Should all be 0(strcmp returns 0 on equal strings)
   printf("Testing put and get test methods\n");
   printf("Outputting string comparisons (should be 0)\n");
   printf("%d %d %d %d %d %d %d %d %d %d\n", result1, result2, result3, result4, result5, result6, result7, result8, result9, result10);
